@@ -1,0 +1,74 @@
+#playing-panel {display:flex;flex-direction:column;gap:16px}
+.record-details {min-width:0}
+#detail-source {border:0;margin-top:9px;padding:0;min-height:15px}
+.lyric-pane {flex:1 0 155px;min-height:0;border-top:1px solid #ffffff10;padding-top:12px;display:flex;flex-direction:column;overflow:hidden}
+.lyric-toolbar,.lyric-actions,.lyric-attribution,.ly-editor-tools {display:flex;align-items:center}
+.lyric-toolbar {justify-content:space-between;gap:4px}
+.lyric-toolbar h3 {font-size:17px;line-height:1.2;color:#eeeef0}
+.lyric-actions {gap:1px}.lyric-actions .icon {width:27px;height:29px;border-radius:8px}
+.lyric-actions .icon svg {width:15px;height:15px}
+#ly-lines {position:relative;overflow-y:auto;overscroll-behavior:contain;flex:1;min-height:58px;margin:8px 0;scrollbar-width:thin;scrollbar-color:#ffffff1f transparent;text-align:left}
+body {--ly-base:16px;--ly-stage:clamp(25px,2.2vw,47px)}
+body[data-lyric-size=large] {--ly-base:19px;--ly-stage:clamp(30px,2.8vw,57px)}
+body[data-lyric-size=small] {--ly-base:14px;--ly-stage:clamp(21px,1.8vw,37px)}
+.ly-line {display:block;background:none;border:0;padding:4px 3px 5px 0;margin:0;width:100%;font:650 var(--ly-base)/1.42 "Nunito Sans",sans-serif;text-align:start;overflow-wrap:anywhere;color:#cfcccb}
+.ly-line small {display:block;font-size:.73em;line-height:1.45;margin:4px 0;color:#b6b1ae;font-weight:540}
+.synced .ly-line {color:#898686;transition:color .22s,opacity .22s}
+.synced .ly-line.active,.synced .ly-line:hover {color:#fff}
+.synced .ly-line.active small {color:#ffc8ae}
+.ly-empty {display:grid;justify-items:start;gap:5px;color:#a6a3a1;font-size:13px;padding-top:5px}
+.ly-empty-icon {color:#a69b98}.ly-empty-icon svg {width:16px;height:16px}
+.ly-empty-action {color:#ffc4a7;padding:4px 0;font-weight:650;font-size:12px}
+.lyric-attribution {min-height:18px;color:#a19a97;font-size:10px;gap:6px}
+.lyric-attribution .icon {width:22px;height:22px}
+.ly-dialog {width:min(420px,88vw)}
+.ly-dialog .panel-heading {margin-bottom:10px}
+.ly-caption {color:#aaa5a3;font-size:13px;margin:9px 0 12px}
+#ly-text {width:100%;min-height:120px;max-height:46vh;resize:vertical;border:1px solid #363537;background:#0c0c0e;border-radius:9px;color:#eee;padding:10px;font:14px/1.55 "Nunito Sans",sans-serif;user-select:text;cursor:text}
+.ly-editor-tools {gap:10px;margin-top:10px}.ly-editor-tools .light-button {margin-left:auto}
+.ly-dialog select,.ly-dialog input[type=number] {padding:4px 7px;background:#222227;color:#eee;border:1px solid #3b3939;border-radius:7px}
+.ly-dialog input[type=number] {width:72px;user-select:text;cursor:text}
+.lyric-actions .icon:hover,.online-line>.icon:hover,.track-tools .icon:hover,.drawer-title .icon:hover,.now>#now-add:hover {background:#ffffff12}
+.now>#now-add {margin-left:0;width:34px;height:32px;border-radius:10px}
+.online-line>.icon {flex:0 0 36px;width:36px;height:36px;margin:0 4px;border-radius:10px}
+.drawer-title .icon {width:32px;height:32px;border-radius:9px}
+.track-tools {justify-content:flex-end;gap:1px}.track-tools .icon {width:30px;height:32px;border-radius:9px}
+#stage-orb {display:none}
+.lyrics-screen {display:grid;grid-template-rows:minmax(0,1fr) var(--footer);background:#0b0c0e;isolation:isolate;--stage-edge:clamp(24px,5vw,105px);--orb-size:min(45vw,74vh,870px)}
+.lyrics-screen::before {content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 94% 57%,#4a39302b,transparent 53%),linear-gradient(105deg,#101013,#141215 63%,#0c0c0d)}
+.lyrics-screen .top,.lyrics-screen #rail,.lyrics-screen main {display:none}
+body.lyrics-screen .workspace {display:block;min-height:0}
+body.lyrics-screen #playing-panel {display:flex;position:relative;isolation:isolate;flex-direction:column;align-items:stretch;gap:0;height:100%;overflow:hidden;visibility:visible;margin:0;padding:0 var(--stage-edge);border:0;border-radius:0;background:transparent;box-shadow:none}
+.lyrics-screen .record-details {display:grid;flex:none;align-content:center;align-items:center;grid-template-columns:clamp(47px,4.5vw,76px) minmax(0,1fr);column-gap:15px;min-height:clamp(85px,12vh,140px);padding-right:175px;border-bottom:1px solid #ffffff19}
+.lyrics-screen .panel-kicker {display:none}
+.lyrics-screen #detail-art {grid-column:1;grid-row:1/4;width:100%;height:auto;border-radius:9px;box-shadow:0 3px 15px #0008}
+.lyrics-screen #detail-title,.lyrics-screen #detail-artist,.lyrics-screen #detail-source {grid-column:2;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;margin:0}
+.lyrics-screen #detail-title {font-size:clamp(19px,2vw,35px);line-height:1.18;letter-spacing:-.05em}
+.lyrics-screen #detail-artist {font-size:14px;color:#b7b3b2}
+.lyrics-screen #detail-source {font-size:10px;min-height:0;margin-top:2px}
+.lyrics-screen .lyric-pane {flex:1;min-height:0;overflow:hidden;border:0;padding:0}
+.lyrics-screen .lyric-toolbar {height:0}
+.lyrics-screen .lyric-toolbar h3 {display:none}
+.lyrics-screen .lyric-actions {position:absolute;right:var(--stage-edge);top:clamp(24px,4vh,48px);gap:4px;padding:4px;background:#ffffff07;border:1px solid #ffffff12;border-radius:14px}
+.lyrics-screen .lyric-actions .icon {width:33px;height:33px}
+.lyrics-screen .lyric-actions svg {width:17px;height:17px}
+.lyrics-screen #ly-lines {flex:1;min-height:0;width:calc(100% - var(--orb-size) + 1vw);margin:0;padding:clamp(34px,16vh,185px) 1vw clamp(45px,23vh,250px) 0;mask-image:linear-gradient(to bottom,transparent,#000 10%,#000 88%,transparent);scrollbar-width:none}
+.lyrics-screen .ly-line {position:relative;padding:clamp(11px,1.65vh,23px) 8px clamp(11px,1.65vh,23px) 0;font-size:calc(var(--ly-stage)*1.1);font-weight:750;line-height:1.18;letter-spacing:-.045em;color:#c7c4c5}
+.lyrics-screen .synced .ly-line {color:#827f82}
+.lyrics-screen .synced .ly-line.active {color:#fff7f1}
+.lyrics-screen .ly-line small {font-size:.54em;line-height:1.45;letter-spacing:0;font-weight:500;margin-top:6px}
+.lyrics-screen .ly-empty {padding:0 0 0 4vw;margin:9vh 0;font-size:var(--ly-stage)}
+.lyrics-screen .ly-empty-action {font-size:15px}
+.lyrics-screen .lyric-attribution {flex:none;padding-bottom:12px}
+.lyrics-screen #stage-orb {position:absolute;display:grid;place-items:center;pointer-events:none;z-index:-1;top:54%;right:1.8vw;width:var(--orb-size);aspect-ratio:1;transform:translateY(-50%)}
+#stage-orb canvas {position:absolute;width:100%;height:100%}
+#stage-orb i {width:62%;aspect-ratio:1;border-radius:50%;background:#392c2a var(--ly-art,none) center/cover;box-shadow:0 14px 45px #0006,inset 0 0 0 1px #ffffff18}
+.lyrics-screen #video-slot:not([hidden]) {position:absolute;right:2vw;top:38%;width:clamp(200px,24vw,510px);height:clamp(200px,17vw,360px);border-radius:13px}
+.lyrics-screen #playing-panel:has(#video-slot:not([hidden])) .record-details {grid-template-columns:minmax(0,1fr)}
+.lyrics-screen #playing-panel:has(#video-slot:not([hidden])) .record-details :is(h2,p,#detail-source) {grid-column:1}
+.lyrics-screen #playing-panel:has(#video-slot:not([hidden])) #stage-orb {display:none}
+.lyrics-screen #playing-panel:has(#video-slot:not([hidden])) #ly-lines {width:73%}
+.lyrics-screen footer {margin-inline:var(--stage-edge);background:#1b1a1c}
+@media(max-width:900px){.lyrics-screen #playing-panel:has(#video-slot:not([hidden])) #ly-lines{width:calc(100% - 210px)}.now>#now-add{width:30px}.utility{gap:1px}.utility .icon{width:25px}}
+@media(max-height:690px){body:not(.lyrics-screen) #detail-art{max-width:min(100%,25vh);align-self:center}body:not(.lyrics-screen) #detail-title{margin-top:9px}body:not(.lyrics-screen) #playing-panel{gap:9px}}
+@media(prefers-reduced-motion:reduce){.ly-line{transition:none}}
